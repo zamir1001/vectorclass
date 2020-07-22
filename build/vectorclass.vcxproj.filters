@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\dhaen\source\repos\convnet\vectorclass\instrset_detect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\dhaen\source\repos\convnet\vectorclass\add-on\random\ranvec1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\dhaen\source\repos\convnet\vectorclass\add-on\random\physseed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\instrset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\add-on\random\ranvec1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectorclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectorf128.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectorf256.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectorf256e.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectorf512.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectorf512e.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectori128.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectori256.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectori256e.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectori512.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectori512e.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectori512s.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectori512se.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectormath_common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectormath_exp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectormath_hyp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectormath_lib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vectormath_trig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\dhaen\source\repos\convnet\vectorclass\vector_convert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\dhaen\source\repos\convnet\vectorclass\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{2FE36516-0121-3D91-985B-920B32620DF7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{CCD60F5C-5452-3BEB-943A-C3407DD7D66A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

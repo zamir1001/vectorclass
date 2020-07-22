@@ -1,0 +1,10 @@
+^C:\USERS\DHAEN\SOURCE\REPOS\CONVNET\VECTORCLASS\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/dhaen/source/repos/convnet/vectorclass -BC:/Users/dhaen/source/repos/convnet/vectorclass/build --check-stamp-file C:/Users/dhaen/source/repos/convnet/vectorclass/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

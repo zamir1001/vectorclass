@@ -1,0 +1,64 @@
+﻿Environment at start of build:
+ALLUSERSPROFILE = C:\ProgramData
+APPDATA = C:\Users\dhaen\AppData\Roaming
+CommonProgramFiles = C:\Program Files (x86)\Common Files
+CommonProgramFiles(x86) = C:\Program Files (x86)\Common Files
+CommonProgramW6432 = C:\Program Files\Common Files
+COMPUTERNAME = DESKTOP-D4CCFD5
+ComSpec = C:\Windows\system32\cmd.exe
+DriverData = C:\Windows\System32\Drivers\DriverData
+ForceIdentityAuthenticationType = Embedded
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+FPS_BROWSER_USER_PROFILE_STRING = Default
+FugueRepository = C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO\2019\COMMUNITY\TEAM TOOLS\STATIC ANALYSIS TOOLS\FxCop\Repository
+HOMEDRIVE = C:
+HOMEPATH = \Users\dhaen
+LOCALAPPDATA = C:\Users\dhaen\AppData\Local
+LOGONSERVER = \\DESKTOP-D4CCFD5
+MSBuildLoadMicrosoftTargetsReadOnly = true
+NUMBER_OF_PROCESSORS = 24
+OneDrive = C:\Users\dhaen\OneDrive
+OneDriveConsumer = C:\Users\dhaen\OneDrive
+OS = Windows_NT
+Path = C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Graphviz2.38\bin;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files\CMake\bin;C:\Users\dhaen\AppData\Local\Microsoft\WindowsApps;C:\Users\dhaen\.dotnet\tools;C:\Users\dhaen\.dotnet\tools
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+PkgDefApplicationConfigFile = C:\Users\dhaen\AppData\Local\Microsoft\VisualStudio\16.0_c29e666f\devenv.exe.config
+PROCESSOR_ARCHITECTURE = x86
+PROCESSOR_ARCHITEW6432 = AMD64
+PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
+PROCESSOR_LEVEL = 23
+PROCESSOR_REVISION = 7100
+ProgramData = C:\ProgramData
+ProgramFiles = C:\Program Files (x86)
+ProgramFiles(x86) = C:\Program Files (x86)
+ProgramW6432 = C:\Program Files
+PSModulePath = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+PUBLIC = C:\Users\Public
+PYTHONPATH = C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\DLLs;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\Lib;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\libs;C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\tcl
+ServiceHubLogSessionKey = 0F9E256F
+SESSIONNAME = Console
+SignInWithHomeTenantOnly = True
+SystemDrive = C:
+SystemRoot = C:\Windows
+TEMP = C:\Users\dhaen\AppData\Local\Temp
+ThreadedWaitDialogDpiContext = -4
+TMP = C:\Users\dhaen\AppData\Local\Temp
+USERDOMAIN = DESKTOP-D4CCFD5
+USERDOMAIN_ROAMINGPROFILE = DESKTOP-D4CCFD5
+USERNAME = dhaen
+USERPROFILE = C:\Users\dhaen
+VisualStudioDir = C:\Users\dhaen\Documents\Visual Studio 2019
+VisualStudioEdition = Microsoft Visual Studio Community 2019
+VisualStudioVersion = 16.0
+VSAPPIDDIR = C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\
+VSAPPIDNAME = devenv.exe
+VSLANG = 1033
+VSSKUEDITION = Community
+windir = C:\Windows
+
+  Building Custom Rule C:/Users/dhaen/source/repos/convnet/vectorclass/CMakeLists.txt
+  instrset_detect.cpp
+  ranvec1.cpp
+  physseed.cpp
+  Generating Code...
+  vectorclass.vcxproj -> C:\Users\dhaen\source\repos\convnet\x64\Release\vectorclass.lib
