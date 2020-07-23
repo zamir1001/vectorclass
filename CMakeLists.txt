@@ -13,9 +13,6 @@ INCLUDE(GNUInstallDirs)
 set(SRC_FILES
 	instrset.h	
 	instrset_detect.cpp
-	add-on/random/ranvec1.h
-	add-on/random/ranvec1.cpp
-	add-on/random/physseed.cpp
 	vectorclass.h
 	vectorf128.h
 	vectorf256.h
@@ -35,6 +32,9 @@ set(SRC_FILES
 	vectormath_lib.h
 	vectormath_trig.h
 	vector_convert.h
+	add-on/random/ranvec1.h
+	add-on/random/ranvec1.cpp
+	add-on/random/physseed.cpp
 )
 
 # Library
