@@ -13,6 +13,7 @@ INCLUDE(GNUInstallDirs)
 set(SRC_FILES
 	instrset.h	
 	instrset_detect.cpp
+	
 	vectorclass.h
 	vectorf128.h
 	vectorf256.h
