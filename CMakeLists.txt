@@ -6,7 +6,7 @@ if("${CMAKE_BUILD_TYPE}" STREQUAL "")
         "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel RelWithAssert ...")
 endif()
 
-set(VECTORCLASS_VERSION_MAJOR 2
+set(VECTORCLASS_VERSION_MAJOR 2)
 set(VECTORCLASS_VERSION_MINOR 0)
 set(VECTORCLASS_VERSION_PATCH 0)
 set(VECTORCLASS_VERSION_NOTE "")
