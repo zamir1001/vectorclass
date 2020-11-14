@@ -65,7 +65,7 @@ set(SRC_FILES
 # Library
 #--------------------------------------
 add_library(${PROJECT_NAME} STATIC $(SRC_FILES})
-VECTORCLASSN_TARGET_ENABLE_CXX17(${PROJECT_NAME})
+VECTORCLASS_TARGET_ENABLE_CXX17(${PROJECT_NAME})
 target_include_directories(${PROJECT_NAME}
      PUBLIC 
         $<INSTALL_INTERFACE:include>    
