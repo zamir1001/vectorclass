@@ -1,14 +1,37 @@
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.1)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-string(APPEND CMAKE_CXX_FLAGS " -mfma -mavx2 -march=native -fopenmp")
-string(APPEND CMAKE_C_FLAGS " -mfma -mavx2 -march=native -fopenmp")
- 
-project(vectorclass VERSION 2 LANGUAGES C CXX)
+if("${CMAKE_BUILD_TYPE}" STREQUAL "")
+    message(STATUS "CMAKE_BUILD_TYPE is unset, defaulting to Release")
+    set(CMAKE_BUILD_TYPE "Release" CACHE STRING
+        "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel RelWithAssert ...")
+endif()
+
+set(VECTORCLASS_VERSION_MAJOR 2
+set(VECTORCLASS_VERSION_MINOR 0)
+set(VECTORCLASS_VERSION_PATCH 0)
+set(VECTORCLASS_VERSION_NOTE "")
+
+set(VECTORCLASS_VERSION ${VECTORCLASS_VERSION_MAJOR}.${VECTORCLASS_VERSION_MINOR}.${VECTORCLASS_VERSION_PATCH})
+math(EXPR VECTORCLASS_VERSION_NUMBER "10000*${VECTORCLASS_VERSION_MAJOR} + 100*${VECTORCLASS_VERSION_MINOR} + ${VECTORCLASS_VERSION_PATCH}")
+
+message(STATUS "Using CMake version ${CMAKE_VERSION}")
 
 INCLUDE(GNUInstallDirs)
+INCLUDE(CheckCSourceCompiles)
+
+project(vectorclass VERSION ${VECTORCLASS_VERSION} LANGUAGES CXX)
+
+MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
+  IF(MSVC)
+    TARGET_COMPILE_OPTIONS(${target} PRIVATE /arch:AVX2 /openmp:experimental)
+  ELSE()
+    TARGET_COMPILE_OPTIONS(${target} PRIVATE -mavx2 -mfma -march=znver2 -fopenmp)
+  ENDIF()
+  SET_TARGET_PROPERTIES(${target} PROPERTIES
+    CXX_STANDARD 17
+    CXX_STANDARD_REQUIRED YES
+    CXX_EXTENSIONS OFF)
+ENDMACRO()
 
 # Files
 #--------------------------------------
@@ -41,8 +64,10 @@ set(SRC_FILES
 
 # Library
 #--------------------------------------
-add_library(${PROJECT_NAME} STATIC 
-	${SRC_FILES}
+add_library(${PROJECT_NAME} STATIC $(SRC_FILES})
+VECTORCLASSN_TARGET_ENABLE_CXX17(${PROJECT_NAME})
+target_include_directories(${PROJECT_NAME}
+     PUBLIC 
+        $<INSTALL_INTERFACE:include>    
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 )
-
-target_include_directories(${PROJECT_NAME} PUBLIC  .)
