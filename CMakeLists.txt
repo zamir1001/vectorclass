@@ -29,8 +29,6 @@ math(EXPR VECTORCLASS_VERSION_NUMBER "10000*${VECTORCLASS_VERSION_MAJOR} + 100*$
 
 project(vectorclass VERSION ${VECTORCLASS_VERSION} LANGUAGES C CXX)
 
-message(STATUS "Using CMake version ${CMAKE_VERSION}")
-
 #####
 # Change the default build type from Debug to Release, while still
 # supporting overriding the build type.
