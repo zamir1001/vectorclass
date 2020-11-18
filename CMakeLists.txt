@@ -19,7 +19,17 @@ if(POLICY CMP0048)
     cmake_policy(SET CMP0048 NEW)
 endif(POLICY CMP0048)
 
-project(vectorclass VERSION 2 LANGUAGES CXX)
+set(VECTORCLASS_VERSION_MAJOR 2)
+set(VECTORCLASS_VERSION_MINOR 0)
+set(VECTORCLASS_VERSION_PATCH 0)
+set(VECTORCLASS_VERSION_NOTE "")
+
+set(VECTORCLASS_VERSION ${VECTORCLASS_VERSION_MAJOR}.${VECTORCLASS_VERSION_MINOR}.${VECTORCLASS_VERSION_PATCH})
+math(EXPR VECTORCLASS_VERSION_NUMBER "10000*${VECTORCLASS_VERSION_MAJOR} + 100*${VECTORCLASS_VERSION_MINOR} + ${VECTORCLASS_VERSION_PATCH}")
+
+project(vectorclass VERSION ${VECTORCLASS_VERSION} LANGUAGES CXX)
+
+message(STATUS "Using CMake version ${CMAKE_VERSION}")
 
 #####
 # Change the default build type from Debug to Release, while still
@@ -42,7 +52,7 @@ else(NOT CMAKE_BUILD_TYPE)
 endif(NOT CMAKE_BUILD_TYPE)
 
 
-MACRO(DNN_TARGET_ENABLE_CXX17 target)
+MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
   IF(WIN32 OR MSVC)
     TARGET_COMPILE_OPTIONS(${target} PRIVATE /arch:AVX2 /openmp:experimental)
   ELSE()
@@ -59,7 +69,6 @@ ENDMACRO()
 set(SRC_FILES
 	instrset.h	
 	instrset_detect.cpp
-	
 	vectorclass.h
 	vectorf128.h
 	vectorf256.h
@@ -86,8 +95,10 @@ set(SRC_FILES
 
 # Library
 #--------------------------------------
-add_library(${PROJECT_NAME} STATIC 
-	${SRC_FILES}
+add_library(${PROJECT_NAME} STATIC ${SRC_FILES})
+VECTORCLASS_TARGET_ENABLE_CXX17(${PROJECT_NAME})
+target_include_directories(${PROJECT_NAME}
+     PUBLIC 
+        $<INSTALL_INTERFACE:include>    
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 )
-DNN_TARGET_ENABLE_CXX17(${PROJECT_NAME})
-target_include_directories(${PROJECT_NAME} PUBLIC  .)
