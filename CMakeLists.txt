@@ -1,12 +1,58 @@
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+message(STATUS "Using CMake version ${CMAKE_VERSION}")
+
+INCLUDE(GNUInstallDirs)
+INCLUDE(CheckCSourceCompiles)
+INCLUDE(CheckCXXSourceCompiles)
+
+#####
+# Enables link_directories() treat paths relative
+# to the source dir.
+if(POLICY CMP0015)
+    cmake_policy(SET CMP0015 NEW)
+endif(POLICY CMP0015)
+
+#####
+# Enables project() command manages VERSION variables.
+if(POLICY CMP0048)
+    cmake_policy(SET CMP0048 NEW)
+endif(POLICY CMP0048)
 
 project(vectorclass VERSION 2 LANGUAGES CXX)
 
-INCLUDE(GNUInstallDirs)
+#####
+# Change the default build type from Debug to Release, while still
+# supporting overriding the build type.
+#
+# The CACHE STRING logic here and elsewhere is needed to force CMake
+# to pay attention to the value of these variables.
+if(NOT CMAKE_BUILD_TYPE)
+    message(STATUS "No build type specified; defaulting to CMAKE_BUILD_TYPE=Release.")
+    set(CMAKE_BUILD_TYPE Release CACHE STRING
+        "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel."
+        FORCE)
+else(NOT CMAKE_BUILD_TYPE)
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        message("==========================================================================================")
+        message(STATUS "Build type: Debug. Performance will be terrible!")
+        message(STATUS "Add -DCMAKE_BUILD_TYPE=Release to the CMake command line to get an optimized build.")
+        message("==========================================================================================")
+    endif(CMAKE_BUILD_TYPE STREQUAL "Debug")
+endif(NOT CMAKE_BUILD_TYPE)
+
+
+MACRO(DNN_TARGET_ENABLE_CXX17 target)
+  IF(WIN32 OR MSVC)
+    TARGET_COMPILE_OPTIONS(${target} PRIVATE /arch:AVX2 /openmp:experimental)
+  ELSE()
+    TARGET_COMPILE_OPTIONS(${target} PRIVATE -mavx2 -mfma -march=core-avx2 -fopenmp -fPIC)
+  ENDIF()
+  SET_TARGET_PROPERTIES(${target} PROPERTIES
+    CXX_STANDARD 17
+    CXX_STANDARD_REQUIRED YES
+    CXX_EXTENSIONS OFF)
+ENDMACRO()
 
 # Files
 #--------------------------------------
@@ -43,5 +89,5 @@ set(SRC_FILES
 add_library(${PROJECT_NAME} STATIC 
 	${SRC_FILES}
 )
-
+DNN_TARGET_ENABLE_CXX17(${PROJECT_NAME})
 target_include_directories(${PROJECT_NAME} PUBLIC  .)
