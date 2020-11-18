@@ -56,6 +56,7 @@ MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
   IF(WIN32 OR MSVC)
     TARGET_COMPILE_OPTIONS(${target} PRIVATE /arch:AVX2 /openmp:experimental)
   ELSE()
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mavx2 -mfma -march=core-avx2 -fopenmp -fPIC")
     TARGET_COMPILE_OPTIONS(${target} PRIVATE -mavx2 -mfma -march=core-avx2 -fopenmp -fPIC)
   ENDIF()
   SET_TARGET_PROPERTIES(${target} PROPERTIES
