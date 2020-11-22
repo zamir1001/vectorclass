@@ -1,6 +1,8 @@
-cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.7...3.19)
 
-message(STATUS "Using CMake version ${CMAKE_VERSION}")
+if(${CMAKE_VERSION} VERSION_LESS 3.12)
+    cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
+endif()
 
 INCLUDE(GNUInstallDirs)
 INCLUDE(CheckCSourceCompiles)
@@ -59,7 +61,7 @@ MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
   SET_TARGET_PROPERTIES(${target} PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED YES
-    CXX_EXTENSIONS OFF)
+    CXX_EXTENSIONS ON)
 ENDMACRO()
 
 # Files
@@ -93,7 +95,7 @@ set(SRC_FILES
 
 # Library
 #--------------------------------------
-add_library(${PROJECT_NAME} STATIC ${SRC_FILES})
+add_library(${PROJECT_NAME} ${SRC_FILES})
 VECTORCLASS_TARGET_ENABLE_CXX17(${PROJECT_NAME})
 target_include_directories(${PROJECT_NAME}
      PUBLIC 
