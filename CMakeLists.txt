@@ -96,10 +96,10 @@ set(SRC_FILES
 
 # Library
 #--------------------------------------
-add_library(${PROJECT_NAME} ${SRC_FILES})
+add_library(${PROJECT_NAME} STATIC ${SRC_FILES})
 VECTORCLASS_TARGET_ENABLE_CXX17(${PROJECT_NAME})
 target_include_directories(${PROJECT_NAME}
      PUBLIC 
-        $<INSTALL_INTERFACE:include>    
+        $<INSTALL_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>    
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 )
