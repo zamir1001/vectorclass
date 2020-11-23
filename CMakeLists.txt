@@ -55,7 +55,7 @@ option(BUILD_SHARED_LIBS "Build shared library" OFF)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-MACRO(DNN_TARGET_ENABLE_CXX17 target)
+MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
   if(WIN32 OR MSVC)
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
       # warning level 4 and all warnings as errors
