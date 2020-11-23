@@ -66,7 +66,7 @@ MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
   else()
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
       # warning level 4 and all warnings as errors
-      TARGET_COMPILE_OPTIONS(${target} PRIVATE -Wextra -mavx2 -mfma -march=znver2 -fopenmp -fPIC $<$<CXX_COMPILER_ID:GNU>:-Wno-psabi>)
+      TARGET_COMPILE_OPTIONS(${target} PRIVATE -mavx2 -mfma -march=znver2 -fopenmp -fPIC $<$<CXX_COMPILER_ID:GNU>:-Wno-psabi>)
     else()
       TARGET_COMPILE_OPTIONS(${target} PRIVATE -Ofast -Wno-error -mavx2 -mfma -march=znver2 -fopenmp -fPIC $<$<CXX_COMPILER_ID:GNU>:-Wno-psabi>)
     endif()
