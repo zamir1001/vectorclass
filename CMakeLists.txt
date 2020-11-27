@@ -68,7 +68,7 @@ MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
       # warning level 4 and all warnings as errors
       TARGET_COMPILE_OPTIONS(${target} PRIVATE -mavx2 -mfma -march=znver2 -fopenmp -fPIC $<$<CXX_COMPILER_ID:GNU>:-Wno-psabi>)
     else()
-      TARGET_COMPILE_OPTIONS(${target} PRIVATE -Ofast -Wno-error -mavx2 -mfma -march=znver2 -fopenmp -fPIC $<$<CXX_COMPILER_ID:GNU>:-Wno-psabi>)
+      TARGET_COMPILE_OPTIONS(${target} PRIVATE -Ofast -O3 -flto -funroll-loops -enable-partial-unswitch -unroll-aggressive -enable-strided-vectorization -enable-epilog-vectorization -Wno-error -mavx2 -mfma -march=znver2 -fopenmp -ffast-math -fPIC $<$<CXX_COMPILER_ID:GNU>:-Wno-psabi>)
     endif()
   endif()
   SET_TARGET_PROPERTIES(${target} PROPERTIES
