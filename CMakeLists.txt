@@ -4,10 +4,6 @@ if(${CMAKE_VERSION} VERSION_LESS 3.12)
     cmake_policy(VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
 endif()
 
-INCLUDE(GNUInstallDirs)
-INCLUDE(CheckCSourceCompiles)
-INCLUDE(CheckCXXSourceCompiles)
-
 #####
 # Enables link_directories() treat paths relative
 # to the source dir.
@@ -30,6 +26,10 @@ set(VECTORCLASS_VERSION ${VECTORCLASS_VERSION_MAJOR}.${VECTORCLASS_VERSION_MINOR
 math(EXPR VECTORCLASS_VERSION_NUMBER "10000*${VECTORCLASS_VERSION_MAJOR} + 100*${VECTORCLASS_VERSION_MINOR} + ${VECTORCLASS_VERSION_PATCH}")
 
 project(vectorclass VERSION ${VECTORCLASS_VERSION} LANGUAGES CXX)
+
+INCLUDE(GNUInstallDirs)
+INCLUDE(CheckCSourceCompiles)
+INCLUDE(CheckCXXSourceCompiles)
 
 #####
 # Change the default build type from Debug to Release, while still
@@ -66,12 +66,12 @@ MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
   else()
     if(CMAKE_BUILD_TYPE STREQUAL "Debug")
       # warning level 4 and all warnings as errors
-      TARGET_COMPILE_OPTIONS(${target} PRIVATE -g -Wextra -mavx2 -mfma -march=znver2 -fopenmp -fPIC $<$<CXX_COMPILER_ID:GNU>:-Wno-psabi>)
+      TARGET_COMPILE_OPTIONS(${target} PRIVATE -g -Wextra -mavx2 -mfma -march=znver2 -fopenmp -fPIC)
     else()
       if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-        TARGET_COMPILE_OPTIONS(${target} PRIVATE -Ofast -O3 -funroll-loops -ftree-vectorize -Wno-error -mavx2 -mfma -march=znver2 -fopenmp -ffast-math -fPIC $<$<CXX_COMPILER_ID:GNU>:-Wno-psabi>)
+        TARGET_COMPILE_OPTIONS(${target} PRIVATE -Ofast -flto -funroll-loops -ftree-vectorize -Wno-error -mavx2 -mfma -march=znver2 -fopenmp -ffast-math -fPIC>)
       else()
-        TARGET_COMPILE_OPTIONS(${target} PRIVATE -Ofast -O3 -flto -funroll-loops -enable-partial-unswitch -unroll-aggressive -enable-strided-vectorization -enable-epilog-vectorization -ftree-vectorize -Wno-error -mavx2 -mfma -march=znver2 -fopenmp -ffast-math -fPIC $<$<CXX_COMPILER_ID:GNU>:-Wno-psabi>)
+        TARGET_COMPILE_OPTIONS(${target} PRIVATE -Ofast -flto -funroll-loops -enable-partial-unswitch -unroll-aggressive -enable-strided-vectorization -enable-epilog-vectorization -ftree-vectorize -Wno-error -mavx2 -mfma -march=znver2 -fopenmp -ffast-math -fPIC)
       endif()
     endif()
   endif()
