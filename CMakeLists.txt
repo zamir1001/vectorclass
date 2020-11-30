@@ -44,9 +44,6 @@ else()
 endif()
 
 MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
-  target_compile_options(target PRIVATE
-    "$<$<CONFIG:RELEASE>:${release_flags}>"
-    "$<$<CONFIG:DEBUG>:${debug_flags}>")
   SET_TARGET_PROPERTIES(${target} PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED YES
@@ -86,6 +83,9 @@ set(SRC_FILES
 #--------------------------------------
 add_library(${PROJECT_NAME} STATIC ${SRC_FILES})
 VECTORCLASS_TARGET_ENABLE_CXX17(${PROJECT_NAME})
+target_compile_options(vectorclass PRIVATE
+    "$<$<CONFIG:RELEASE>:${release_flags}>"
+    "$<$<CONFIG:DEBUG>:${debug_flags}>")
 target_include_directories(${PROJECT_NAME}
      PUBLIC 
         $<INSTALL_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>    
