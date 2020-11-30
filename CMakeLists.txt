@@ -36,13 +36,13 @@ option(BUILD_SHARED_LIBS "Build shared library" OFF)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
  
 if(WIN32 OR MSVC)
-  add_compile_options(add_compile_options(
+  add_compile_options(
 	$<$<COMPILE_LANGUAGE:CXX>:/arch:AVX2 /openmp:experimental>
     $<$<COMPILE_LANGUAGE:C>:/arch:AVX2 /openmp:experimental>)
   set(debug_flags /W4 /Od)
   set(release_flags /W3 /O2 /Ob2 /Oi /Ot /GL /GF /Gy /fp:fast)
 else()
-  add_compile_options(add_compile_options(
+  add_compile_options(
 	$<$<COMPILE_LANGUAGE:CXX>:-mfma -mavx2 -march=znver2 -fopenmp -fPIC>
 	$<$<COMPILE_LANGUAGE:C>:-mfma -mavx2 -march=znver2 -fopenmp -fPIC>)
   set(debug_flags -g -Wextra)
