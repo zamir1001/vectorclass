@@ -36,11 +36,13 @@ option(BUILD_SHARED_LIBS "Build shared library" OFF)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
  
 if(WIN32 OR MSVC)
-  set (debug_flags /W4 /Od /arch:AVX2 /openmp:experimental)
-  set (release_flags /W3 /O2 /Ob2 /Oi /Ot /GL /GF /Gy /fp:fast /arch:AVX2 /openmp:experimental)
+  add_compile_options(/arch:AVX2 /openmp:experimental)
+  set(debug_flags /W4 /Od)
+  set(release_flags /W3 /O2 /Ob2 /Oi /Ot /GL /GF /Gy /fp:fast)
 else()
-  set (debug_flags -g -Wextra -mfma -mavx2 march=znver2 -fopenmp -fPIC)
-  set (release_flags -Ofast -funroll-loops -ftree-vectorize -Wno-error -mfma -mavx2 -march=znver2 -fopenmp -ffast-math -fPIC)
+  add_compile_options(-mfma -mavx2 -march=znver2 -fopenmp -fPIC)
+  set(debug_flags -g -Wextra)
+  set(release_flags -Ofast -funroll-loops -ftree-vectorize -Wno-error -ffast-math)
 endif()
 
 MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
@@ -48,7 +50,7 @@ MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED YES
     CXX_EXTENSIONS ON)
-  target_compile_options(${target} PUBLIC
+  target_compile_options(${target} PRIVATE
     "$<$<CONFIG:RELEASE>:${release_flags}>"
     "$<$<CONFIG:DEBUG>:${debug_flags}>")
 ENDMACRO()
