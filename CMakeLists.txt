@@ -39,8 +39,8 @@ if(WIN32 OR MSVC)
   set (debug_flags /W4 /Od /arch:AVX2 /openmp:experimental)
   set (release_flags /W3 /O2 /Ob2 /Oi /Ot /GL /GF /Gy /fp:fast /arch:AVX2 /openmp:experimental)
 else()
-  set (debug_flags -g -Wextra -mavx2 -mfma -march=znver2 -fopenmp -fPIC)
-  set (release_flags -Ofast -funroll-loops -ftree-vectorize -Wno-error -mavx2 -mfma -march=znver2 -fopenmp -ffast-math -fPIC)
+  set (debug_flags -g -Wextra -mfma -mavx2 march=znver2 -fopenmp -fPIC)
+  set (release_flags -Ofast -funroll-loops -ftree-vectorize -Wno-error -mfma -mavx2 -march=znver2 -fopenmp -ffast-math -fPIC)
 endif()
 
 MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
@@ -48,6 +48,9 @@ MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED YES
     CXX_EXTENSIONS ON)
+  target_compile_options(target PUBLIC
+    "$<$<CONFIG:RELEASE>:${release_flags}>"
+    "$<$<CONFIG:DEBUG>:${debug_flags}>")
 ENDMACRO()
 
 # Files
@@ -83,9 +86,6 @@ set(SRC_FILES
 #--------------------------------------
 add_library(${PROJECT_NAME} STATIC ${SRC_FILES})
 VECTORCLASS_TARGET_ENABLE_CXX17(${PROJECT_NAME})
-target_compile_options(vectorclass PRIVATE
-    "$<$<CONFIG:RELEASE>:${release_flags}>"
-    "$<$<CONFIG:DEBUG>:${debug_flags}>")
 target_include_directories(${PROJECT_NAME}
      PUBLIC 
         $<INSTALL_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>    
