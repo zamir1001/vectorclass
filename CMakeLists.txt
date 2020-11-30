@@ -48,7 +48,7 @@ MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED YES
     CXX_EXTENSIONS ON)
-  target_compile_options(target PUBLIC
+  target_compile_options(${target} PUBLIC
     "$<$<CONFIG:RELEASE>:${release_flags}>"
     "$<$<CONFIG:DEBUG>:${debug_flags}>")
 ENDMACRO()
