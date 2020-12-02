@@ -54,7 +54,7 @@ else()
     "$<$<COMPILE_LANGUAGE:CXX>:${flags}>"
     "$<$<COMPILE_LANGUAGE:C>:${flags}>")
   set(debug_flags -g -Wextra)
-  set(release_flags -Ofast -funroll-loops -ftree-vectorize -Wno-error -ffast-math)
+  set(release_flags -Ofast -funroll-loops -ftree-vectorize -Wno-error)
 endif()
 
 MACRO(VECTORCLASS_TARGET_ENABLE_CXX17 target)
