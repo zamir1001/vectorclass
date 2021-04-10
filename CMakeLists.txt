@@ -49,7 +49,7 @@ if(WIN32 OR MSVC)
   set(debug_flags /W4 /Od)
   set(release_flags /W3 /O2 /Ob2 /Oi /Ot /GL /GF /Gy /fp:fast)
 else()
-  set(flags -mfma -mavx2 -march=znver2)
+  set(flags -mfma -mavx2 -march=native)
   add_compile_options(
     "$<$<COMPILE_LANGUAGE:CXX>:${flags}>"
     "$<$<COMPILE_LANGUAGE:C>:${flags}>")
